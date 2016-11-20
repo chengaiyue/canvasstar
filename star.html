@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+#canvas {
+	display: block;
+	margin: 0 auto;
+}
+</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+<script>
+(function () {
+	var c = document.getElementById('canvas');
+	var cxt = c.getContext('2d');
+	c.width = 800;
+	c.height = 600;
+	c.style.border = '2px solid goldenrod';
+	
+	
+	cxt.save();
+	cxt.fillStyle = "#232455";
+	cxt.fillRect(0,0,c.width,c.height);
+	cxt.restore();
+	
+	
+	
+	
+	for ( var i = 0; i < 300; i++ ) {
+		var x = Math.random()*(c.width - 40) + 20;
+		var y = Math.random()*(c.height - 40) + 20;
+		
+		var R = Math.random()*10 + 10;
+		var r = R/2;
+		
+		var deg = Math.random()*360;
+		drawStar(x,y,R,r,deg);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function drawStar(x,y,R,r,deg) {
+		cxt.save();
+		cxt.translate(x,y);
+		cxt.beginPath();
+		cxt.fillStyle = '#FFFF34';
+		for ( var i = 0; i < 5; i++ ) {
+			console.log(1);
+			cxt.lineTo(Math.cos((18 + 72*i + deg)*Math.PI/180)*R,-Math.sin((18 + 72*i + deg)*Math.PI/180)*R);
+			cxt.lineTo(Math.cos((54 + 72*i + deg)*Math.PI/180)*r,-Math.sin((54 + 72*i + deg)*Math.PI/180)*r);
+		}
+		
+		cxt.closePath();
+		cxt.fill();
+		cxt.restore();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+})();
+</script>
+</html>
